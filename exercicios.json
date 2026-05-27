@@ -1,0 +1,457 @@
+{
+  "meta": {
+    "titulo": "Treino Olímpico de Matemática",
+    "subtitulo": "Preparatório Jacob Palis · OBMEP · Canguru",
+    "serie": "7º ano",
+    "totalDias": 20
+  },
+  "temas": {
+    "segunda": "Aritmética e Teoria dos Números",
+    "terca": "Raciocínio Lógico e Contagem",
+    "quarta": "Álgebra",
+    "quinta": "Geometria Plana",
+    "sexta": "Prova Real (questão de competição)"
+  },
+  "dias": [
+    {
+      "dia": 1,
+      "tema": "Aritmética e Teoria dos Números",
+      "topico": "Divisibilidade e critérios",
+      "exercicios": [
+        {
+          "enunciado": "Um número de 4 algarismos tem a forma 3AB4, onde A e B são algarismos. Sabe-se que o número é divisível por 9. Quantos pares (A, B) satisfazem essa condição?",
+          "dica": "A soma dos algarismos de um número divisível por 9 é múltipla de 9. Escreva a equação A + B = ? e conte os pares com 0 ≤ A, B ≤ 9.",
+          "gabarito": "A soma dos algarismos é 3 + A + B + 4 = 7 + A + B. Para divisibilidade por 9, precisamos 7 + A + B = 9 ou 18 ou 27. Caso 9: A + B = 2 → pares (0,2),(1,1),(2,0) = 3 pares. Caso 18: A + B = 11 → pares (2,9),(3,8),(4,7),(5,6),(6,5),(7,4),(8,3),(9,2) = 8 pares. Caso 27: A + B = 20 → impossível. Total: 11 pares."
+        },
+        {
+          "enunciado": "Qual é o maior divisor comum de 2026 e 1742?",
+          "dica": "Use o Algoritmo de Euclides: divide o maior pelo menor e substitui pelo resto, repetindo até o resto ser zero.",
+          "gabarito": "2026 = 1 × 1742 + 284. 1742 = 6 × 284 + 38. 284 = 7 × 38 + 18. 38 = 2 × 18 + 2. 18 = 9 × 2 + 0. MDC(2026, 1742) = 2."
+        },
+        {
+          "enunciado": "Um professor quer distribuir 84 lápis azuis e 60 lápis vermelhos em kits idênticos, sem sobrar nenhum lápis. Qual é o maior número possível de kits? Quantos lápis de cada cor terá cada kit?",
+          "dica": "O maior número de kits é o MDC(84, 60). Depois divida cada quantidade pelo MDC.",
+          "gabarito": "MDC(84, 60): 84 = 1×60 + 24; 60 = 2×24 + 12; 24 = 2×12 + 0. MDC = 12. Cada kit terá 84÷12 = 7 lápis azuis e 60÷12 = 5 lápis vermelhos. Total: 12 kits."
+        }
+      ]
+    },
+    {
+      "dia": 2,
+      "tema": "Raciocínio Lógico e Contagem",
+      "topico": "Princípio multiplicativo e contagem básica",
+      "exercicios": [
+        {
+          "enunciado": "Em uma cidade, as placas de carro têm 3 letras seguidas de 4 algarismos. Quantas placas diferentes são possíveis se as letras não podem se repetir, mas os algarismos podem?",
+          "dica": "Use o princípio multiplicativo. Conte as escolhas para cada posição independentemente: 26 letras para a primeira, 25 para a segunda (sem repetição), e assim por diante.",
+          "gabarito": "Letras: 26 × 25 × 24 = 15.600 combinações. Algarismos: 10 × 10 × 10 × 10 = 10.000 combinações. Total: 15.600 × 10.000 = 156.000.000 placas."
+        },
+        {
+          "enunciado": "Em um torneio de xadrez com 8 jogadores, cada jogador enfrenta todos os outros exatamente uma vez. Quantas partidas serão jogadas no total?",
+          "dica": "Cada partida envolve 2 jogadores. Pense: quantos pares de jogadores existem? Não importa a ordem (A vs B é igual a B vs A).",
+          "gabarito": "O número de partidas é o número de pares: C(8,2) = (8 × 7) / 2 = 28 partidas."
+        },
+        {
+          "enunciado": "Pedro tem 4 camisas (branca, azul, verde e amarela) e 3 calças (preta, cinza e bege). De quantas formas diferentes ele pode se vestir? Se ele não pode usar camisa amarela com calça cinza, quantas combinações restam?",
+          "dica": "Para a segunda parte, calcule o total e subtraia a combinação proibida.",
+          "gabarito": "Total: 4 × 3 = 12 combinações. Sem a restrição, são 12. A combinação proibida é 1 (amarela + cinza). Restam: 12 − 1 = 11 combinações."
+        }
+      ]
+    },
+    {
+      "dia": 3,
+      "tema": "Álgebra",
+      "topico": "Equações do 1º grau",
+      "exercicios": [
+        {
+          "enunciado": "A soma de três números consecutivos é 87. Qual é o maior deles?",
+          "dica": "Chame o menor de n. Os três números são n, n+1 e n+2. Monte e resolva a equação.",
+          "gabarito": "n + (n+1) + (n+2) = 87 → 3n + 3 = 87 → 3n = 84 → n = 28. Os números são 28, 29 e 30. O maior é 30."
+        },
+        {
+          "enunciado": "Uma torneira enche um tanque em 4 horas. Outra o esvazia em 6 horas. Se as duas estiverem abertas ao mesmo tempo com o tanque cheio, em quantas horas ele ficará completamente vazio?",
+          "dica": "Por hora, uma enche 1/4 do tanque e a outra esvazia 1/6. O saldo por hora é a diferença. Pense: o tanque está enchendo ou esvaziando?",
+          "gabarito": "Por hora: enche 1/4, esvazia 1/6. Saldo: 1/6 − 1/4 = 2/12 − 3/12 = −1/12 (esvazia 1/12 por hora). Tempo para esvaziar: 12 horas."
+        },
+        {
+          "enunciado": "Em uma fazenda há galinhas e coelhos. No total, contam-se 35 cabeças e 94 patas. Quantos coelhos há na fazenda?",
+          "dica": "Monte um sistema: g + c = 35 (cabeças) e 2g + 4c = 94 (patas). Resolva por substituição.",
+          "gabarito": "g + c = 35 → g = 35 − c. Substituindo: 2(35−c) + 4c = 94 → 70 − 2c + 4c = 94 → 2c = 24 → c = 12. Há 12 coelhos (e 23 galinhas)."
+        }
+      ]
+    },
+    {
+      "dia": 4,
+      "tema": "Geometria Plana",
+      "topico": "Áreas e perímetros",
+      "exercicios": [
+        {
+          "enunciado": "Um retângulo tem perímetro de 48 cm. O comprimento é o dobro da largura. Qual é a área do retângulo?",
+          "dica": "Chame a largura de l. O comprimento é 2l. Use a fórmula do perímetro para encontrar l, depois calcule a área.",
+          "gabarito": "2(l + 2l) = 48 → 6l = 48 → l = 8 cm. Comprimento = 16 cm. Área = 8 × 16 = 128 cm²."
+        },
+        {
+          "enunciado": "Um quadrado tem diagonal de 10 cm. Qual é sua área?",
+          "dica": "A diagonal d de um quadrado de lado a satisfaz d² = a² + a² = 2a². Portanto, a área a² = d²/2.",
+          "gabarito": "d = 10 cm → d² = 100. Área = d²/2 = 100/2 = 50 cm²."
+        },
+        {
+          "enunciado": "Uma pista de corrida tem formato de retângulo com dois semicírculos nas extremidades. O retângulo mede 80 m de comprimento e 40 m de largura. Qual é a área total da pista? Use π ≈ 3,14.",
+          "dica": "A área total é a área do retângulo mais a área de um círculo completo de diâmetro 40 m (os dois semicírculos se juntam).",
+          "gabarito": "Área retângulo: 80 × 40 = 3.200 m². Área círculo: π × r² = 3,14 × 20² = 3,14 × 400 = 1.256 m². Área total: 3.200 + 1.256 = 4.456 m²."
+        }
+      ]
+    },
+    {
+      "dia": 5,
+      "tema": "Prova Real",
+      "topico": "Questão de competição — Jacob Palis Nível 1 (estilo)",
+      "exercicios": [
+        {
+          "enunciado": "Três amigos foram a uma loja. O primeiro comprou 5 maçãs e 3 peras e pagou R$ 20,00. O segundo comprou 3 maçãs e 2 peras e pagou R$ 12,00. Quanto o terceiro amigo pagará por 1 maçã e 1 pera?",
+          "dica": "Monte o sistema com maçã = m e pera = p. Tente encontrar uma combinação das duas equações que resulte diretamente em m + p.",
+          "gabarito": "5m + 3p = 20 e 3m + 2p = 12. Multiplicando a segunda por 3: 9m + 6p = 36. Multiplicando a primeira por 2: 10m + 6p = 40. Subtraindo: m = 4. Então p = (20 − 20)/3... Relendo: de 5m+3p=20 e 3m+2p=12, subtraindo: 2m + p = 8. Somando com 3m+2p=12: resultado m+p: 2(2m+p) − (3m+2p) = 2×8 − 12 = 4. Portanto m+p = 4. O terceiro pagará R$ 4,00."
+        },
+        {
+          "enunciado": "Quantos números inteiros entre 1 e 200 são divisíveis por 3 ou por 5?",
+          "dica": "Use o Princípio da Inclusão-Exclusão: |A ∪ B| = |A| + |B| − |A ∩ B|. Os divisíveis por 3 e por 5 simultaneamente são divisíveis por 15.",
+          "gabarito": "Divisíveis por 3: ⌊200/3⌋ = 66. Divisíveis por 5: ⌊200/5⌋ = 40. Divisíveis por 15: ⌊200/15⌋ = 13. Total: 66 + 40 − 13 = 93 números."
+        },
+        {
+          "enunciado": "Em uma sequência, cada termo a partir do terceiro é a soma dos dois anteriores. Se o 5º termo é 12 e o 7º termo é 31, qual é o 1º termo?",
+          "dica": "Chame os dois primeiros termos de a e b. Escreva os termos seguintes em função de a e b e monte equações.",
+          "gabarito": "a₁=a, a₂=b, a₃=a+b, a₄=a+2b, a₅=2a+3b=12, a₆=3a+5b, a₇=5a+8b=31. Do sistema: 2a+3b=12 e 5a+8b=31. Da primeira: 2a=12−3b. Multiplicando por 5: 10a=60−15b. Multiplicando a segunda por 2: 10a+16b=62 → 60−15b+16b=62 → b=2. Então 2a+6=12 → a=3. O 1º termo é 3."
+        }
+      ]
+    },
+    {
+      "dia": 6,
+      "tema": "Aritmética e Teoria dos Números",
+      "topico": "Números primos e fatoração",
+      "exercicios": [
+        {
+          "enunciado": "Quantos divisores possui o número 360?",
+          "dica": "Fatore 360 em primos: 360 = 2^a × 3^b × 5^c. O número de divisores é (a+1)(b+1)(c+1).",
+          "gabarito": "360 = 8 × 45 = 8 × 9 × 5 = 2³ × 3² × 5¹. Número de divisores: (3+1)(2+1)(1+1) = 4 × 3 × 2 = 24 divisores."
+        },
+        {
+          "enunciado": "O número 2^10 × 5^6 tem quantos algarismos?",
+          "dica": "Reescreva 2^10 × 5^6 separando pares de (2×5). Cada par vale 10, que acrescenta um algarismo.",
+          "gabarito": "2^10 × 5^6 = 2^4 × (2^6 × 5^6) = 16 × 10^6 = 16.000.000. O número tem 8 algarismos."
+        },
+        {
+          "enunciado": "Encontre todos os pares de primos (p, q) tais que p + q = 50.",
+          "dica": "Para que p + q seja par (50), os dois primos devem ser ambos ímpares ou um deles ser 2. Lembre que 2 é o único primo par.",
+          "gabarito": "Se ambos ímpares, p + q = ímpar + ímpar = par ✓. Pares com p ≤ q: (3,47), (7,43), (13,37), (19,31). Verifique: 3+47=50✓, 7+43=50✓, 13+37=50✓, 19+31=50✓. Todos primos. São 4 pares."
+        }
+      ]
+    },
+    {
+      "dia": 7,
+      "tema": "Raciocínio Lógico e Contagem",
+      "topico": "Lógica e deduções",
+      "exercicios": [
+        {
+          "enunciado": "Ana, Bruno e Carla participaram de uma corrida. Ana não chegou em último. Bruno não chegou em primeiro. Carla não chegou em segundo. Quem chegou em primeiro, segundo e terceiro?",
+          "dica": "Monte uma tabela com os três corredores e as posições 1º, 2º e 3º. Elimine as impossibilidades usando as afirmações.",
+          "gabarito": "Bruno ≠ 1º, Ana ≠ 3º, Carla ≠ 2º. Possibilidades para 1º: Ana ou Carla. Se Carla for 1ª, restam Ana e Bruno para 2º e 3º; como Ana ≠ 3º → Ana é 2ª e Bruno é 3º. Verifique: Bruno ≠ 1º ✓, Ana ≠ 3º ✓, Carla ≠ 2º ✓. Resposta: 1º Carla, 2º Ana, 3º Bruno."
+        },
+        {
+          "enunciado": "Em uma fileira de 10 cadeiras, João quer sentar de modo que não fique nas duas cadeiras das pontas e não fique ao lado de Maria, que está na cadeira 6. Em quantas cadeiras João pode sentar?",
+          "dica": "Começe listando as cadeiras disponíveis (sem as pontas). Depois elimine as que ficam ao lado da cadeira 6.",
+          "gabarito": "Sem pontas: cadeiras 2,3,4,5,6,7,8,9 (8 cadeiras). Maria está na 6, então João não pode ficar na 5 nem na 7. Restam: 2,3,4,8,9 — mas João também não pode sentar na 6 (ocupada). Disponíveis: 2,3,4,8,9 = 5 cadeiras."
+        },
+        {
+          "enunciado": "Cinco pessoas (A, B, C, D, E) estão em fila. A está atrás de B. C está na frente de D. E está entre A e C. B está imediatamente na frente de C. Determine a ordem completa da fila (da frente para trás).",
+          "dica": "Comece pelo que é mais restrito: B está imediatamente na frente de C, ou seja, ...B,C... A está atrás de B, então A vem depois de B. Posicione E entre A e C.",
+          "gabarito": "B imediatamente antes de C: ...B,C... A atrás de B: A vem depois de B. E entre A e C: a sequência C,E,A ou A,E,C; como A é após B e C é após B, e E está entre eles: B,C,E,A. C na frente de D: D vem após C. D não está posicionado ainda → D vai depois de A. Fila: B, C, E, A, D."
+        }
+      ]
+    },
+    {
+      "dia": 8,
+      "tema": "Álgebra",
+      "topico": "Razões, proporções e porcentagem",
+      "exercicios": [
+        {
+          "enunciado": "Em uma turma, a razão entre meninos e meninas é 3:4. Se há 28 alunos no total, quantos meninos há na turma?",
+          "dica": "Se a razão é 3:4, divida os 28 alunos em 3+4 = 7 partes iguais. Calcule o valor de cada parte.",
+          "gabarito": "7 partes = 28 alunos → 1 parte = 4 alunos. Meninos: 3 × 4 = 12. Meninas: 4 × 4 = 16."
+        },
+        {
+          "enunciado": "Um produto custava R$ 80,00. Foi aumentado em 25% e depois teve um desconto de 20%. Qual é o preço final? O produto ficou mais caro ou mais barato que o preço original?",
+          "dica": "Aplique os percentuais sequencialmente. Aumento de 25%: multiplique por 1,25. Desconto de 20%: multiplique por 0,80.",
+          "gabarito": "Após aumento: 80 × 1,25 = R$ 100,00. Após desconto: 100 × 0,80 = R$ 80,00. O preço final é R$ 80,00 — igual ao original. Aumentar 25% e depois descontar 20% se anulam? Nem sempre: aqui sim, pois 1,25 × 0,80 = 1,00."
+        },
+        {
+          "enunciado": "Se 5 máquinas produzem 5 peças em 5 minutos, quantas peças 100 máquinas produzem em 100 minutos?",
+          "dica": "Primeiro descubra a taxa de produção por máquina por minuto, depois escale.",
+          "gabarito": "5 máquinas → 5 peças em 5 min → 1 máquina → 1 peça em 5 min → 1 máquina → 20 peças em 100 min. 100 máquinas → 100 × 20 = 2.000 peças."
+        }
+      ]
+    },
+    {
+      "dia": 9,
+      "tema": "Geometria Plana",
+      "topico": "Triângulos e o Teorema de Pitágoras",
+      "exercicios": [
+        {
+          "enunciado": "Um triângulo retângulo tem catetos de 5 cm e 12 cm. Qual é o comprimento da hipotenusa e o perímetro do triângulo?",
+          "dica": "Use o Teorema de Pitágoras: h² = a² + b². Depois some os três lados.",
+          "gabarito": "h² = 5² + 12² = 25 + 144 = 169 → h = 13 cm. Perímetro = 5 + 12 + 13 = 30 cm."
+        },
+        {
+          "enunciado": "Uma escada de 10 m apoia-se em uma parede vertical. A base da escada está a 6 m da parede. A que altura da parede a escada chega?",
+          "dica": "A escada, a parede e o chão formam um triângulo retângulo. A escada é a hipotenusa.",
+          "gabarito": "h² + 6² = 10² → h² = 100 − 36 = 64 → h = 8 m. A escada chega a 8 m de altura."
+        },
+        {
+          "enunciado": "Os três ângulos de um triângulo estão na razão 1:2:3. Classifique o triângulo quanto aos ângulos e calcule o valor de cada ângulo.",
+          "dica": "A soma dos ângulos de um triângulo é 180°. Se estão na razão 1:2:3, divida 180° em 1+2+3 = 6 partes.",
+          "gabarito": "6 partes = 180° → 1 parte = 30°. Ângulos: 30°, 60° e 90°. Como tem um ângulo de 90°, é um triângulo retângulo."
+        }
+      ]
+    },
+    {
+      "dia": 10,
+      "tema": "Prova Real",
+      "topico": "Questão de competição — estilo OBMEP Nível 1",
+      "exercicios": [
+        {
+          "enunciado": "Um número natural n tem exatamente 3 divisores. Quais podem ser esses divisores? Como é necessariamente a forma de n?",
+          "dica": "Todo número tem 1 e ele mesmo como divisores. Se tem exatamente 3 divisores, qual deve ser o terceiro? Pense em quadrados de primos.",
+          "gabarito": "Os divisores de n são sempre 1 e n. O terceiro divisor d deve satisfazer 1 < d < n e d | n. Se d | n e n/d também divide n, teríamos um 4º divisor, a menos que d = n/d, ou seja, n = d². Portanto n é o quadrado de um primo. Exemplos: 4 (divisores 1,2,4), 9 (1,3,9), 25 (1,5,25)."
+        },
+        {
+          "enunciado": "Em um quadrado de lado 6 cm, marca-se o ponto médio de cada lado e unem-se esses pontos formando um novo quadrado interno. Qual é a área do quadrado interno?",
+          "dica": "Os pontos médios dos lados distam 3 cm de cada vértice. O lado do quadrado interno é a diagonal de um triângulo retângulo com catetos iguais.",
+          "gabarito": "O lado do quadrado interno conecta pontos médios adjacentes. Cada segmento é hipotenusa de um triângulo retângulo de catetos 3 e 3. Lado = √(9+9) = √18 = 3√2 cm. Área = (3√2)² = 18 cm². (Ou: área do quadrado externo = 36; área do quadrado interno = metade = 18 cm².)"
+        },
+        {
+          "enunciado": "Numa festa, cada pessoa cumprimenta todas as outras com um aperto de mão. No total, houve 45 apertos de mão. Quantas pessoas estavam na festa?",
+          "dica": "O número de apertos de mão é C(n,2) = n(n−1)/2. Monte a equação e resolva.",
+          "gabarito": "n(n−1)/2 = 45 → n(n−1) = 90. Testando: 10 × 9 = 90 ✓. Havia 10 pessoas na festa."
+        }
+      ]
+    },
+    {
+      "dia": 11,
+      "tema": "Aritmética e Teoria dos Números",
+      "topico": "MMC e problemas de ciclos",
+      "exercicios": [
+        {
+          "enunciado": "Três ônibus partem juntos de uma rodoviária. O primeiro volta a cada 12 minutos, o segundo a cada 18 minutos e o terceiro a cada 24 minutos. Após quantos minutos os três partirão juntos novamente?",
+          "dica": "O momento em que os três coincidem é o MMC dos três intervalos.",
+          "gabarito": "MMC(12, 18, 24): 12 = 2²×3; 18 = 2×3²; 24 = 2³×3. MMC = 2³×3² = 72 minutos."
+        },
+        {
+          "enunciado": "Uma lâmpada pisca a cada 4 segundos e outra a cada 6 segundos. Se piscam juntas às 12h00m00s, quando piscam juntas pela próxima vez? E quantas vezes cada uma piscou até lá?",
+          "dica": "O MMC(4,6) dá o intervalo até o próximo piscar simultâneo.",
+          "gabarito": "MMC(4,6) = 12 segundos. Próximo piscar simultâneo: 12h00m12s. Lâmpada 1: 12÷4 = 3 vezes. Lâmpada 2: 12÷6 = 2 vezes."
+        },
+        {
+          "enunciado": "Um número deixa resto 2 ao ser dividido por 3, resto 2 ao ser dividido por 5 e resto 2 ao ser dividido por 7. Qual é o menor número natural positivo com essa propriedade?",
+          "dica": "Se n − 2 é divisível por 3, 5 e 7, então n − 2 é múltiplo do MMC(3,5,7). Calcule o MMC e some 2.",
+          "gabarito": "MMC(3,5,7) = 105. Então n − 2 = 105, portanto n = 107. Verificando: 107 ÷ 3 = 35 resto 2 ✓; 107 ÷ 5 = 21 resto 2 ✓; 107 ÷ 7 = 15 resto 2 ✓."
+        }
+      ]
+    },
+    {
+      "dia": 12,
+      "tema": "Raciocínio Lógico e Contagem",
+      "topico": "Sequências e padrões",
+      "exercicios": [
+        {
+          "enunciado": "Observe a sequência: 2, 6, 12, 20, 30, 42, ... Qual é o padrão? Qual será o 10º termo?",
+          "dica": "Calcule as diferenças entre termos consecutivos: 4, 6, 8, 10, 12, ... Percebe o padrão? Tente escrever o n-ésimo termo como produto de dois fatores.",
+          "gabarito": "Diferenças: 4, 6, 8, 10, 12, 14 (crescem de 2 em 2). O n-ésimo termo é n(n+1): 1×2=2, 2×3=6, 3×4=12, 4×5=20... 10º termo: 10×11 = 110."
+        },
+        {
+          "enunciado": "Quantos quadrados de todos os tamanhos existem em uma grade 4×4 (tabuleiro de xadrez simplificado)?",
+          "dica": "Conte separadamente os quadrados 1×1, 2×2, 3×3 e 4×4. Para um quadrado k×k em uma grade n×n, existem (n−k+1)² posições.",
+          "gabarito": "1×1: 4×4 = 16. 2×2: 3×3 = 9. 3×3: 2×2 = 4. 4×4: 1×1 = 1. Total: 16+9+4+1 = 30 quadrados."
+        },
+        {
+          "enunciado": "Os números de 1 a 100 são escritos em sequência: 123456789101112...9899100. Quantos algarismos foram escritos no total?",
+          "dica": "Separe por quantidade de algarismos: de 1 a 9 (1 algarismo cada), de 10 a 99 (2 algarismos cada), 100 (3 algarismos).",
+          "gabarito": "De 1 a 9: 9 números × 1 = 9 algarismos. De 10 a 99: 90 números × 2 = 180 algarismos. 100: 1 número × 3 = 3 algarismos. Total: 9 + 180 + 3 = 192 algarismos."
+        }
+      ]
+    },
+    {
+      "dia": 13,
+      "tema": "Álgebra",
+      "topico": "Inequações e sistemas",
+      "exercicios": [
+        {
+          "enunciado": "Encontre todos os inteiros x que satisfazem simultaneamente: x + 3 > 7 e 2x − 1 < 11.",
+          "dica": "Resolva cada inequação separadamente para encontrar o intervalo de x. Depois encontre a interseção.",
+          "gabarito": "x + 3 > 7 → x > 4. 2x − 1 < 11 → 2x < 12 → x < 6. Interseção: 4 < x < 6. O único inteiro é x = 5."
+        },
+        {
+          "enunciado": "Maria tem o dobro da idade de João. Daqui a 5 anos, a soma das idades deles será 40. Quantos anos cada um tem hoje?",
+          "dica": "Chame a idade atual de João de j. Maria tem 2j. Daqui a 5 anos: João terá j+5 e Maria terá 2j+5. Monte a equação.",
+          "gabarito": "(j+5) + (2j+5) = 40 → 3j + 10 = 40 → 3j = 30 → j = 10. João tem 10 anos e Maria tem 20 anos."
+        },
+        {
+          "enunciado": "Em uma prova com 20 questões, cada acerto vale 3 pontos e cada erro desconta 1 ponto. Um aluno respondeu todas as questões e fez 44 pontos. Quantas questões ele acertou?",
+          "dica": "Chame o número de acertos de a. O número de erros é 20 − a. Monte a equação com a pontuação total.",
+          "gabarito": "3a − 1(20−a) = 44 → 3a − 20 + a = 44 → 4a = 64 → a = 16. O aluno acertou 16 questões (e errou 4)."
+        }
+      ]
+    },
+    {
+      "dia": 14,
+      "tema": "Geometria Plana",
+      "topico": "Círculos e polígonos regulares",
+      "exercicios": [
+        {
+          "enunciado": "Qual é a soma dos ângulos internos de um hexágono? E de um decágono?",
+          "dica": "A soma dos ângulos internos de um polígono de n lados é (n−2) × 180°.",
+          "gabarito": "Hexágono (n=6): (6−2) × 180° = 4 × 180° = 720°. Decágono (n=10): (10−2) × 180° = 8 × 180° = 1440°."
+        },
+        {
+          "enunciado": "Um círculo tem circunferência de 31,4 cm. Qual é sua área? Use π ≈ 3,14.",
+          "dica": "Da circunferência C = 2πr, encontre o raio r. Depois calcule a área com A = πr².",
+          "gabarito": "2πr = 31,4 → r = 31,4 / (2 × 3,14) = 31,4 / 6,28 = 5 cm. Área = π × 5² = 3,14 × 25 = 78,5 cm²."
+        },
+        {
+          "enunciado": "Um hexágono regular está inscrito em um círculo de raio 6 cm. Qual é o perímetro do hexágono?",
+          "dica": "Em um hexágono regular inscrito em um círculo, o lado do hexágono é igual ao raio do círculo. Por quê? Pense nos triângulos equiláteros formados.",
+          "gabarito": "O hexágono regular pode ser dividido em 6 triângulos equiláteros com lado igual ao raio. Logo, o lado do hexágono = 6 cm. Perímetro = 6 × 6 = 36 cm."
+        }
+      ]
+    },
+    {
+      "dia": 15,
+      "tema": "Prova Real",
+      "topico": "Questão de competição — estilo Canguru Nível Benjamin",
+      "exercicios": [
+        {
+          "enunciado": "Cinco amigos compraram ingressos numerados de 1 a 5. Cada um pegou um ingresso diferente do seu número de ordem na fila. De quantas formas isso pode acontecer? (Ou seja, nenhum dos 5 ficou com o ingresso do seu próprio número.)",
+          "dica": "Esse é o problema dos 'derangements' (desarranjos). Para n=5 objetos, o número de permutações onde nenhum elemento fica em seu lugar original é D(5) = 44.",
+          "gabarito": "D(5) = 5! × (1 − 1/1! + 1/2! − 1/3! + 1/4! − 1/5!) = 120 × (1 − 1 + 0,5 − 1/6 + 1/24 − 1/120) = 120 × 44/120 = 44 formas."
+        },
+        {
+          "enunciado": "A média aritmética de 7 números é 12. Quando um oitavo número é incluído, a média passa a ser 13. Qual é o oitavo número?",
+          "dica": "A soma dos 7 números é 7 × 12. A soma dos 8 números é 8 × 13. O oitavo número é a diferença.",
+          "gabarito": "Soma dos 7 números: 7 × 12 = 84. Soma dos 8 números: 8 × 13 = 104. Oitavo número: 104 − 84 = 20."
+        },
+        {
+          "enunciado": "Um quadrado de lado 4 tem seus vértices em pontos de uma malha quadriculada. Dentro desse quadrado, quantos pontos da malha existem (sem contar os da borda)?",
+          "dica": "Um quadrado de lado 4 cm com vértices nos nós da malha tem internamente (4−1)×(4−1) nós.",
+          "gabarito": "Os nós internos formam uma grade (4−1) × (4−1) = 3 × 3 = 9 pontos."
+        }
+      ]
+    },
+    {
+      "dia": 16,
+      "tema": "Aritmética e Teoria dos Números",
+      "topico": "Progressões e somas",
+      "exercicios": [
+        {
+          "enunciado": "Qual é a soma de todos os números ímpares de 1 a 99?",
+          "dica": "Os números ímpares de 1 a 99 formam uma progressão aritmética. Use a fórmula da soma: S = n × (primeiro + último) / 2, onde n é a quantidade de termos.",
+          "gabarito": "Ímpares de 1 a 99: 1, 3, 5, ..., 99. Quantidade: (99−1)/2 + 1 = 50 termos. Soma: 50 × (1+99)/2 = 50 × 50 = 2.500."
+        },
+        {
+          "enunciado": "Em uma progressão aritmética, o 3º termo é 11 e o 8º termo é 31. Qual é o 1º termo e a razão da progressão?",
+          "dica": "Entre o 3º e o 8º termo há 5 razões de diferença. Use isso para encontrar a razão r, depois volte ao 1º termo.",
+          "gabarito": "a₈ − a₃ = 5r → 31 − 11 = 5r → r = 4. a₃ = a₁ + 2r → 11 = a₁ + 8 → a₁ = 3. PA: 3, 7, 11, 15, 19, 23, 27, 31..."
+        },
+        {
+          "enunciado": "Quantos múltiplos de 7 existem entre 100 e 300 (inclusive)?",
+          "dica": "O menor múltiplo de 7 ≥ 100 é 105 (= 7×15). O maior ≤ 300 é 294 (= 7×42). Conte quantos múltiplos há nesse intervalo.",
+          "gabarito": "105 = 7×15 e 294 = 7×42. Quantidade: 42 − 15 + 1 = 28 múltiplos."
+        }
+      ]
+    },
+    {
+      "dia": 17,
+      "tema": "Raciocínio Lógico e Contagem",
+      "topico": "Probabilidade básica",
+      "exercicios": [
+        {
+          "enunciado": "Um saco contém 5 bolas vermelhas, 3 azuis e 2 verdes. Se uma bola for retirada ao acaso, qual é a probabilidade de ser azul? E de não ser vermelha?",
+          "dica": "Probabilidade = casos favoráveis / casos totais. O total de bolas é 10.",
+          "gabarito": "Total: 10 bolas. P(azul) = 3/10. P(não vermelha) = P(azul ou verde) = (3+2)/10 = 5/10 = 1/2."
+        },
+        {
+          "enunciado": "Dois dados são lançados. Qual é a probabilidade de a soma dos resultados ser 7?",
+          "dica": "Há 6×6 = 36 resultados possíveis. Liste os pares que somam 7.",
+          "gabarito": "Pares que somam 7: (1,6),(2,5),(3,4),(4,3),(5,2),(6,1) = 6 pares. P(soma=7) = 6/36 = 1/6."
+        },
+        {
+          "enunciado": "Uma caixa tem 4 bolas numeradas de 1 a 4. Retiram-se 2 bolas sem reposição. Qual a probabilidade de a soma ser par?",
+          "dica": "A soma de dois números é par quando ambos são pares ou ambos são ímpares. Liste as combinações.",
+          "gabarito": "Pares: {1,2},{1,3},{1,4},{2,3},{2,4},{3,4} = 6 combinações. Soma par: ambos ímpares {1,3} ou ambos pares {2,4} = 2 casos. P = 2/6 = 1/3."
+        }
+      ]
+    },
+    {
+      "dia": 18,
+      "tema": "Álgebra",
+      "topico": "Problemas algébricos avançados",
+      "exercicios": [
+        {
+          "enunciado": "Se x + 1/x = 3, qual é o valor de x² + 1/x²?",
+          "dica": "Eleve ao quadrado a expressão x + 1/x = 3 e use o produto notável (a+b)² = a² + 2ab + b².",
+          "gabarito": "(x + 1/x)² = x² + 2·x·(1/x) + 1/x² = x² + 2 + 1/x² = 9. Portanto x² + 1/x² = 9 − 2 = 7."
+        },
+        {
+          "enunciado": "Dois números diferem entre si em 8 e o produto deles é 84. Quais são os dois números?",
+          "dica": "Chame os números de x e x+8. Monte a equação do produto e resolva. Pense também nos casos com números negativos.",
+          "gabarito": "x(x+8) = 84 → x² + 8x − 84 = 0. Testando: x=6: 6×14=84 ✓. Também x=−14: (−14)×(−6)=84 ✓. Pares: (6, 14) ou (−14, −6)."
+        },
+        {
+          "enunciado": "A soma de três números consecutivos pares é 78. Quais são os números?",
+          "dica": "Números pares consecutivos diferem em 2. Chame-os de n, n+2 e n+4.",
+          "gabarito": "n + (n+2) + (n+4) = 78 → 3n + 6 = 78 → 3n = 72 → n = 24. Os números são 24, 26 e 28."
+        }
+      ]
+    },
+    {
+      "dia": 19,
+      "tema": "Geometria Plana",
+      "topico": "Semelhança e escalas",
+      "exercicios": [
+        {
+          "enunciado": "Dois triângulos semelhantes têm lados correspondentes de 6 cm e 9 cm. Se a área do menor triângulo é 24 cm², qual é a área do maior?",
+          "dica": "A razão entre áreas de figuras semelhantes é o quadrado da razão entre lados correspondentes.",
+          "gabarito": "Razão de semelhança: 9/6 = 3/2. Razão de áreas: (3/2)² = 9/4. Área do maior: 24 × 9/4 = 54 cm²."
+        },
+        {
+          "enunciado": "Em um mapa, a escala é 1:500.000. Uma estrada mede 8 cm no mapa. Quantos quilômetros ela tem na realidade?",
+          "dica": "Multiplique a medida do mapa pelo denominador da escala para obter a medida real. Converta para km.",
+          "gabarito": "Medida real: 8 × 500.000 = 4.000.000 cm = 40.000 m = 40 km."
+        },
+        {
+          "enunciado": "Uma sombra de um poste mede 4 m. Ao mesmo tempo, um menino de 1,6 m de altura projeta uma sombra de 0,8 m. Qual é a altura do poste?",
+          "dica": "A razão altura/sombra é a mesma para todos os objetos no mesmo instante (triângulos semelhantes).",
+          "gabarito": "h/4 = 1,6/0,8 = 2. Portanto h = 8 m. O poste tem 8 m de altura."
+        }
+      ]
+    },
+    {
+      "dia": 20,
+      "tema": "Prova Real — Desafio Final",
+      "topico": "Questão de competição — nível integrado",
+      "exercicios": [
+        {
+          "enunciado": "Um número de dois algarismos é tal que o algarismo das dezenas é o dobro do algarismo das unidades. Se invertermos os algarismos, o novo número é 27 a menos que o original. Qual é o número?",
+          "dica": "Chame o algarismo das unidades de u. O das dezenas é 2u. O número é 10(2u) + u = 21u. Invertido: 10u + 2u = 12u. Monte a equação.",
+          "gabarito": "21u − 12u = 27 → 9u = 27 → u = 3. Algarismo das dezenas: 6. O número é 63. Verificação: 63 − 36 = 27 ✓."
+        },
+        {
+          "enunciado": "Em uma olimpíada, 40% dos participantes são do Rio, 35% de São Paulo e o restante de outros estados. Se há 120 participantes de outros estados, quantos participantes há no total? Quantos são do Rio e de São Paulo?",
+          "dica": "Os participantes de outros estados correspondem a 100% − 40% − 35% = 25% do total.",
+          "gabarito": "25% = 120 → Total = 120 × 100/25 = 480 participantes. Rio: 40% × 480 = 192. São Paulo: 35% × 480 = 168."
+        },
+        {
+          "enunciado": "Qual é o menor número inteiro positivo que, dividido por 2, deixa resto 1; dividido por 3, deixa resto 2; dividido por 4, deixa resto 3; e dividido por 5, deixa resto 4?",
+          "dica": "Observe que em todos os casos o resto é sempre 1 a menos que o divisor. Isso significa que n + 1 é divisível por 2, 3, 4 e 5 simultaneamente.",
+          "gabarito": "n + 1 é múltiplo de MMC(2,3,4,5) = 60. O menor é n + 1 = 60, portanto n = 59. Verificação: 59÷2=29 r1 ✓; 59÷3=19 r2 ✓; 59÷4=14 r3 ✓; 59÷5=11 r4 ✓."
+        }
+      ]
+    }
+  ]
+}

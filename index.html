@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Treino Olímpico de Matemática</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0f0f11;
+    --surface:   #18181c;
+    --border:    #2a2a32;
+    --accent:    #e8c547;
+    --accent2:   #5b8dee;
+    --accent3:   #e8547a;
+    --text:      #e8e6e0;
+    --muted:     #7a7880;
+    --done-bg:   #1a2a1a;
+    --done-border:#2d5a2d;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    gap: 1rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .brand-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+  }
+
+  .brand-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  .header-nav {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+    text-decoration: none;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--muted);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0f0f11;
+    font-weight: 600;
+    border-color: var(--accent);
+  }
+  .btn-primary:hover { filter: brightness(1.1); }
+
+  .btn-blue {
+    background: transparent;
+    border-color: var(--accent2);
+    color: var(--accent2);
+  }
+  .btn-blue:hover { background: var(--accent2); color: #fff; }
+
+  /* ── VIEWS ── */
+  #view-home, #view-day { padding: 2rem; max-width: 900px; margin: 0 auto; }
+
+  /* ── HOME ── */
+  .home-hero {
+    margin-bottom: 2.5rem;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .home-hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    line-height: 1.2;
+    color: var(--text);
+  }
+
+  .home-hero h1 em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.2rem;
+  }
+
+  .progress-bar-wrap {
+    margin-top: 1rem;
+    background: var(--border);
+    border-radius: 99px;
+    height: 6px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 99px;
+    transition: width 0.5s ease;
+  }
+
+  /* ── GRID DE DIAS ── */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .day-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .day-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(232,197,71,0.08);
+  }
+
+  .day-card.done {
+    background: var(--done-bg);
+    border-color: var(--done-border);
+  }
+
+  .day-card.done::after {
+    content: '✓';
+    position: absolute;
+    top: 0.5rem;
+    right: 0.6rem;
+    font-size: 0.75rem;
+    color: #4caf50;
+    font-weight: 700;
+  }
+
+  .day-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .day-card.done .day-num { color: #4caf50; }
+
+  .day-tema {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    line-height: 1.3;
+  }
+
+  .day-topico {
+    font-size: 0.78rem;
+    color: var(--text);
+    margin-top: 0.25rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  /* ── VIEW DIA ── */
+  .day-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .day-header-left h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--text);
+  }
+
+  .day-header-left .tema-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+    background: rgba(232,197,71,0.08);
+    border: 1px solid rgba(232,197,71,0.2);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+  }
+
+  .day-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  /* ── DONE TOGGLE ── */
+  .done-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 6px;
+    border: 1px solid var(--done-border);
+    background: var(--done-bg);
+    color: #4caf50;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .done-toggle:hover { filter: brightness(1.2); }
+
+  .done-toggle.pending {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--muted);
+  }
+
+  /* ── EXERCÍCIOS ── */
+  .exercicio {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+    background: var(--surface);
+  }
+
+  .exercicio-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ex-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #0f0f11;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .ex-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  .ex-enunciado {
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.7;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ex-extras {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .ex-dica, .ex-gabarito {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .ex-dica { border-right: 1px solid var(--border); }
+
+  .ex-section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+
+  .ex-dica .ex-section-label { color: var(--accent2); }
+  .ex-gabarito .ex-section-label { color: var(--accent3); }
+
+  .ex-dica p { color: var(--text); opacity: 0.85; }
+  .ex-gabarito p { color: var(--text); opacity: 0.85; }
+
+  .toggle-extras {
+    padding: 0.6rem 1.25rem;
+    display: flex;
+    gap: 1rem;
+    border-top: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+  }
+
+  .toggle-btn {
+    font-size: 0.75rem;
+    color: var(--muted);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0;
+    transition: color 0.1s;
+  }
+
+  .toggle-btn:hover { color: var(--accent); }
+  .toggle-btn.active { color: var(--accent); }
+
+  .ex-extras { display: none; }
+  .ex-extras.visible { display: grid; }
+
+  /* ── NAV DIAS ── */
+  .day-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    @page { margin: 2cm; }
+
+    body {
+      background: #fff;
+      color: #000;
+      font-family: 'Georgia', serif;
+      font-size: 11pt;
+    }
+
+    header,
+    .day-actions,
+    .day-nav,
+    .toggle-extras,
+    .ex-extras,
+    #view-home {
+      display: none !important;
+    }
+
+    #view-day { padding: 0; max-width: 100%; }
+
+    .day-header {
+      margin-bottom: 1.5rem;
+      border-bottom: 2pt solid #000;
+      padding-bottom: 0.75rem;
+    }
+
+    .day-header-left h2 {
+      font-size: 16pt;
+      color: #000;
+    }
+
+    .tema-tag {
+      font-size: 9pt;
+      color: #444;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: monospace;
+    }
+
+    .exercicio {
+      border: 1pt solid #bbb;
+      border-radius: 0;
+      margin-bottom: 1.5rem;
+      page-break-inside: avoid;
+      background: #fff;
+    }
+
+    .exercicio-header {
+      background: #f0f0f0;
+      border-bottom: 1pt solid #bbb;
+      padding: 0.4rem 0.75rem;
+    }
+
+    .ex-num {
+      background: #333;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      font-size: 9pt;
+    }
+
+    .ex-label { color: #444; }
+
+    .ex-enunciado {
+      padding: 0.75rem;
+      border-bottom: 1pt solid #bbb;
+      font-size: 10.5pt;
+      line-height: 1.6;
+      color: #000;
+    }
+
+    /* Espaço para rascunho */
+    .exercicio::after {
+      content: '';
+      display: block;
+      height: 5.5cm;
+      border-top: 1pt dashed #ccc;
+      margin: 0 0.75rem 0.75rem;
+    }
+
+    .print-footer {
+      display: block !important;
+      text-align: center;
+      font-size: 8pt;
+      color: #888;
+      margin-top: 2rem;
+      border-top: 1pt solid #ddd;
+      padding-top: 0.5rem;
+    }
+  }
+
+  .print-footer { display: none; }
+
+  /* ── LOADING ── */
+  #loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── TEMA COLORS ── */
+  .tema-aritmetica .ex-num { background: var(--accent); }
+  .tema-logica .ex-num { background: var(--accent2); }
+  .tema-algebra .ex-num { background: #c084fc; }
+  .tema-geometria .ex-num { background: #34d399; color: #0f0f11; }
+  .tema-prova .ex-num { background: var(--accent3); }
+
+  .tag-aritmetica { color: var(--accent); border-color: rgba(232,197,71,0.3); background: rgba(232,197,71,0.07); }
+  .tag-logica { color: var(--accent2); border-color: rgba(91,141,238,0.3); background: rgba(91,141,238,0.07); }
+  .tag-algebra { color: #c084fc; border-color: rgba(192,132,252,0.3); background: rgba(192,132,252,0.07); }
+  .tag-geometria { color: #34d399; border-color: rgba(52,211,153,0.3); background: rgba(52,211,153,0.07); }
+  .tag-prova { color: var(--accent3); border-color: rgba(232,84,122,0.3); background: rgba(232,84,122,0.07); }
+</style>
+</head>
+<body>
+
+<header id="main-header">
+  <div class="brand">
+    <span class="brand-title">Treino Olímpico</span>
+    <span class="brand-sub">Jacob Palis · OBMEP · Canguru</span>
+  </div>
+  <div class="header-nav" id="header-nav">
+    <button class="btn btn-ghost" onclick="showHome()">← Todos os dias</button>
+  </div>
+</header>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <span style="color:var(--muted);font-size:0.85rem;">Carregando exercícios…</span>
+</div>
+
+<div id="view-home" style="display:none"></div>
+<div id="view-day" style="display:none"></div>
+
+<div class="print-footer" id="print-footer"></div>
+
+<script>
+let DATA = null;
+let completed = JSON.parse(localStorage.getItem('olimpico_done') || '[]');
+
+// ── Carregar JSON ─────────────────────────────────────────────────
+fetch('./exercicios.json')
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(d => { DATA = d; init(); })
+  .catch(() => {
+    document.getElementById('loading').innerHTML =
+      '<p style="color:var(--accent3);text-align:center">Não foi possível carregar <code>exercicios.json</code>.<br>Verifique se o arquivo está na mesma pasta.</p>';
+  });
+
+// ── Init ──────────────────────────────────────────────────────────
+function init() {
+  document.getElementById('loading').style.display = 'none';
+  showHome();
+}
+
+// ── Persistência ──────────────────────────────────────────────────
+function isDone(dia) { return completed.includes(dia); }
+
+function toggleDone(dia) {
+  if (isDone(dia)) {
+    completed = completed.filter(d => d !== dia);
+  } else {
+    completed.push(dia);
+  }
+  localStorage.setItem('olimpico_done', JSON.stringify(completed));
+}
+
+// ── Classe por tema ───────────────────────────────────────────────
+function temaClass(tema) {
+  const t = tema.toLowerCase();
+  if (t.includes('aritmética') || t.includes('teoria')) return 'aritmetica';
+  if (t.includes('lógico') || t.includes('contagem') || t.includes('probabilidade')) return 'logica';
+  if (t.includes('álgebra')) return 'algebra';
+  if (t.includes('geometria')) return 'geometria';
+  if (t.includes('prova')) return 'prova';
+  return 'aritmetica';
+}
+
+// ── HOME ──────────────────────────────────────────────────────────
+function showHome() {
+  document.getElementById('view-day').style.display = 'none';
+  document.getElementById('view-home').style.display = 'block';
+  document.getElementById('header-nav').innerHTML = '';
+
+  const total = DATA.meta.totalDias;
+  const done  = completed.length;
+  const pct   = Math.round(done / total * 100);
+
+  const grid = DATA.dias.map(d => {
+    const tc   = temaClass(d.tema);
+    const tick = isDone(d.dia);
+    return `
+      <div class="day-card ${tick ? 'done' : ''}" onclick="showDay(${d.dia})">
+        <div class="day-num">D${String(d.dia).padStart(2,'0')}</div>
+        <div class="day-tema">${d.tema}</div>
+        <div class="day-topico">${d.topico}</div>
+      </div>`;
+  }).join('');
+
+  document.getElementById('view-home').innerHTML = `
+    <div class="home-hero">
+      <div>
+        <h1>Matemática<br><em>Olímpica</em></h1>
+        <p style="color:var(--muted);font-size:0.85rem;margin-top:0.5rem">${DATA.meta.serie} · Preparatório 20 dias</p>
+        <div class="progress-bar-wrap" style="margin-top:1rem">
+          <div class="progress-bar-fill" style="width:${pct}%"></div>
+        </div>
+        <p style="font-size:0.72rem;color:var(--muted);margin-top:0.4rem;font-family:'DM Mono',monospace">${done}/${total} dias concluídos · ${pct}%</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">${done}</div>
+          <div class="stat-label">Feitos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">${total - done}</div>
+          <div class="stat-label">Restam</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">${done * 3}</div>
+          <div class="stat-label">Exercícios</div>
+        </div>
+      </div>
+    </div>
+    <div class="section-label">Selecione o dia</div>
+    <div class="days-grid">${grid}</div>
+  `;
+}
+
+// ── DAY VIEW ─────────────────────────────────────────────────────
+function showDay(num) {
+  const d  = DATA.dias.find(x => x.dia === num);
+  const tc = temaClass(d.tema);
+
+  document.getElementById('view-home').style.display = 'none';
+  document.getElementById('view-day').style.display  = 'block';
+
+  document.getElementById('header-nav').innerHTML = `
+    <button class="btn btn-ghost" onclick="showHome()">← Todos os dias</button>
+    <button class="btn btn-primary" onclick="window.print()">⎙ Imprimir folha</button>
+  `;
+
+  const exHtml = d.exercicios.map((ex, i) => `
+    <div class="exercicio tema-${tc}" id="ex-${num}-${i}">
+      <div class="exercicio-header">
+        <div class="ex-num">${i+1}</div>
+        <span class="ex-label">Exercício ${i+1} de ${d.exercicios.length}</span>
+      </div>
+      <div class="ex-enunciado">${ex.enunciado}</div>
+      <div class="toggle-extras">
+        <button class="toggle-btn" onclick="toggleSection(${num},${i},'dica',this)">
+          💡 Ver dica
+        </button>
+        <button class="toggle-btn" onclick="toggleSection(${num},${i},'gab',this)">
+          ✓ Ver gabarito
+        </button>
+        <button class="toggle-btn" onclick="toggleAll(${num},${i},this)">
+          ◈ Ver tudo
+        </button>
+      </div>
+      <div class="ex-extras" id="extras-${num}-${i}">
+        <div class="ex-dica">
+          <div class="ex-section-label">💡 Dica</div>
+          <p>${ex.dica}</p>
+        </div>
+        <div class="ex-gabarito">
+          <div class="ex-section-label">✓ Gabarito</div>
+          <p>${ex.gabarito}</p>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  const doneBtnClass = isDone(num) ? '' : 'pending';
+  const doneBtnText  = isDone(num) ? '✓ Dia concluído' : '○ Marcar como feito';
+
+  const prevDia = num > 1 ? num - 1 : null;
+  const nextDia = num < DATA.meta.totalDias ? num + 1 : null;
+
+  document.getElementById('view-day').innerHTML = `
+    <div class="day-header">
+      <div class="day-header-left">
+        <h2>Dia ${num} — ${d.topico}</h2>
+        <span class="tema-tag tag-${tc}">${d.tema}</span>
+      </div>
+      <div class="day-actions">
+        <button class="done-toggle ${doneBtnClass}" id="done-btn-${num}" onclick="handleDone(${num})">
+          ${doneBtnText}
+        </button>
+      </div>
+    </div>
+    ${exHtml}
+    <div class="day-nav">
+      ${prevDia ? `<button class="btn btn-ghost" onclick="showDay(${prevDia})">← Dia ${prevDia}</button>` : '<span></span>'}
+      ${nextDia ? `<button class="btn btn-ghost" onclick="showDay(${nextDia})">Dia ${nextDia} →</button>` : '<span></span>'}
+    </div>
+  `;
+
+  // Footer para impressão
+  document.getElementById('print-footer').textContent =
+    `Treino Olímpico de Matemática · ${DATA.meta.serie} · Dia ${num}: ${d.topico}`;
+
+  window.scrollTo(0, 0);
+}
+
+// ── Toggles dica / gabarito ───────────────────────────────────────
+function toggleSection(dia, ex, tipo, btn) {
+  const wrap  = document.getElementById(`extras-${dia}-${ex}`);
+  const dica  = wrap.querySelector('.ex-dica');
+  const gab   = wrap.querySelector('.ex-gabarito');
+
+  if (tipo === 'dica') {
+    const show = !dica.classList.contains('vis');
+    dica.classList.toggle('vis', show);
+    gab.classList.remove('vis');
+    wrap.classList.toggle('visible', show || gab.classList.contains('vis'));
+  } else {
+    const show = !gab.classList.contains('vis');
+    gab.classList.toggle('vis', show);
+    dica.classList.remove('vis');
+    wrap.classList.toggle('visible', show || dica.classList.contains('vis'));
+  }
+
+  // Esconde elementos não marcados como .vis
+  [...wrap.children].forEach(el => {
+    el.style.display = el.classList.contains('vis') ? '' : 'none';
+  });
+
+  if (!dica.classList.contains('vis') && !gab.classList.contains('vis')) {
+    wrap.classList.remove('visible');
+    [...wrap.children].forEach(el => el.style.display = '');
+  }
+
+  btn.classList.toggle('active');
+}
+
+function toggleAll(dia, ex, btn) {
+  const wrap = document.getElementById(`extras-${dia}-${ex}`);
+  const showing = wrap.classList.contains('visible');
+  wrap.classList.toggle('visible', !showing);
+  [...wrap.children].forEach(el => el.style.display = '');
+  [...wrap.querySelectorAll('.vis')].forEach(el => el.classList.remove('vis'));
+  btn.classList.toggle('active', !showing);
+
+  // Reset outros botões
+  const toggles = wrap.parentElement.querySelectorAll('.toggle-btn');
+  toggles.forEach((b, i) => { if (i < 2) b.classList.remove('active'); });
+}
+
+// ── Marcar dia como feito ─────────────────────────────────────────
+function handleDone(num) {
+  toggleDone(num);
+  const btn = document.getElementById(`done-btn-${num}`);
+  const done = isDone(num);
+  btn.className = `done-toggle ${done ? '' : 'pending'}`;
+  btn.textContent = done ? '✓ Dia concluído' : '○ Marcar como feito';
+}
+</script>
+</body>
+</html>
