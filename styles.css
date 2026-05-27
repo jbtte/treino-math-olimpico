@@ -1,0 +1,542 @@
+/* ── VARIÁVEIS ─────────────────────────────────────────────────── */
+:root {
+  --bg:         #0f0f11;
+  --surface:    #18181c;
+  --border:     #2a2a32;
+  --accent:     #e8c547;
+  --accent2:    #5b8dee;
+  --accent3:    #e8547a;
+  --text:       #e8e6e0;
+  --muted:      #7a7880;
+  --done-bg:    #1a2a1a;
+  --done-border:#2d5a2d;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── HEADER ─────────────────────────────────────────────────────── */
+header {
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 100;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.brand-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.25rem;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+
+.brand-sub {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+.header-nav {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* ── BOTÕES ──────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--muted);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+.btn-primary {
+  background: var(--accent);
+  color: #0f0f11;
+  font-weight: 600;
+  border-color: var(--accent);
+}
+.btn-primary:hover { filter: brightness(1.1); }
+
+/* ── VIEWS ───────────────────────────────────────────────────────── */
+#view-home, #view-day { padding: 2rem; max-width: 900px; margin: 0 auto; }
+
+/* ── HOME — HERO ─────────────────────────────────────────────────── */
+.home-hero {
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.home-hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.home-hero h1 em { color: var(--accent); font-style: italic; }
+
+.hero-stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+.stat { text-align: center; }
+
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.2rem;
+}
+
+.progress-bar-wrap {
+  margin-top: 1rem;
+  background: var(--border);
+  border-radius: 99px;
+  height: 6px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 99px;
+  transition: width 0.5s ease;
+}
+
+/* ── GRID DE DIAS ────────────────────────────────────────────────── */
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.day-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.day-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(232,197,71,0.08);
+}
+
+.day-card.done {
+  background: var(--done-bg);
+  border-color: var(--done-border);
+}
+
+.day-card.done::after {
+  content: '✓';
+  position: absolute;
+  top: 0.5rem;
+  right: 0.6rem;
+  font-size: 0.75rem;
+  color: #4caf50;
+  font-weight: 700;
+}
+
+.day-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.6rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.day-card.done .day-num { color: #4caf50; }
+
+.day-tema {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.3rem;
+  line-height: 1.3;
+}
+
+.day-topico {
+  font-size: 0.78rem;
+  color: var(--text);
+  margin-top: 0.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* ── VIEW DIA ────────────────────────────────────────────────────── */
+.day-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.day-header-left h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.8rem;
+  color: var(--text);
+}
+
+.day-header-left .tema-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+  background: rgba(232,197,71,0.08);
+  border: 1px solid rgba(232,197,71,0.2);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+}
+
+.day-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ── BOTÃO CONCLUÍDO ─────────────────────────────────────────────── */
+.done-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid var(--done-border);
+  background: var(--done-bg);
+  color: #4caf50;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.done-toggle:hover { filter: brightness(1.2); }
+
+.done-toggle.pending {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--muted);
+}
+
+/* ── EXERCÍCIOS ──────────────────────────────────────────────────── */
+.exercicio {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.exercicio-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.ex-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #0f0f11;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ex-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.ex-enunciado {
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.7;
+  border-bottom: 1px solid var(--border);
+}
+
+.ex-extras {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+}
+
+.ex-extras.visible { display: grid; }
+
+.ex-dica, .ex-gabarito {
+  padding: 0.875rem 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.ex-dica { border-right: 1px solid var(--border); }
+
+.ex-section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+}
+
+.ex-dica .ex-section-label  { color: var(--accent2); }
+.ex-gabarito .ex-section-label { color: var(--accent3); }
+
+.ex-dica p, .ex-gabarito p { color: var(--text); opacity: 0.85; }
+
+.toggle-extras {
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  gap: 1rem;
+  border-top: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+
+.toggle-btn {
+  font-size: 0.75rem;
+  color: var(--muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0;
+  transition: color 0.1s;
+}
+
+.toggle-btn:hover  { color: var(--accent); }
+.toggle-btn.active { color: var(--accent); }
+
+/* ── NAVEGAÇÃO ENTRE DIAS ────────────────────────────────────────── */
+.day-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ── LOADING ─────────────────────────────────────────────────────── */
+#loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── CORES POR TEMA ──────────────────────────────────────────────── */
+.tema-aritmetica .ex-num { background: var(--accent); }
+.tema-logica     .ex-num { background: var(--accent2); }
+.tema-algebra    .ex-num { background: #c084fc; }
+.tema-geometria  .ex-num { background: #34d399; color: #0f0f11; }
+.tema-prova      .ex-num { background: var(--accent3); }
+
+.tag-aritmetica { color: var(--accent);  border-color: rgba(232,197,71,0.3);  background: rgba(232,197,71,0.07); }
+.tag-logica     { color: var(--accent2); border-color: rgba(91,141,238,0.3);  background: rgba(91,141,238,0.07); }
+.tag-algebra    { color: #c084fc;        border-color: rgba(192,132,252,0.3); background: rgba(192,132,252,0.07); }
+.tag-geometria  { color: #34d399;        border-color: rgba(52,211,153,0.3);  background: rgba(52,211,153,0.07); }
+.tag-prova      { color: var(--accent3); border-color: rgba(232,84,122,0.3);  background: rgba(232,84,122,0.07); }
+
+/* ── FOOTER DE IMPRESSÃO (oculto na tela) ────────────────────────── */
+.print-footer { display: none; }
+
+/* ════════════════════════════════════════════════════════════════════
+   IMPRESSÃO
+   ════════════════════════════════════════════════════════════════════ */
+@media print {
+  @page { margin: 2cm; }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-family: 'Georgia', serif;
+    font-size: 11pt;
+  }
+
+  header,
+  .day-actions,
+  .day-nav,
+  .toggle-extras,
+  .ex-extras,
+  #view-home {
+    display: none !important;
+  }
+
+  #view-day { padding: 0; max-width: 100%; }
+
+  .day-header {
+    margin-bottom: 1.5rem;
+    border-bottom: 2pt solid #000;
+    padding-bottom: 0.75rem;
+  }
+
+  .day-header-left h2 { font-size: 16pt; color: #000; }
+
+  .tema-tag {
+    font-size: 9pt;
+    color: #444;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: monospace;
+  }
+
+  .exercicio {
+    border: 1pt solid #bbb;
+    border-radius: 0;
+    margin-bottom: 1.25rem;
+    page-break-inside: avoid;
+    background: #fff;
+  }
+
+  .exercicio-header {
+    background: #f0f0f0;
+    border-bottom: 1pt solid #bbb;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .ex-num {
+    background: #333;
+    color: #fff;
+    width: 22px;
+    height: 22px;
+    font-size: 9pt;
+  }
+
+  .ex-label { color: #444; }
+
+  .ex-enunciado {
+    padding: 0.75rem;
+    border-bottom: none;
+    font-size: 10.5pt;
+    line-height: 1.6;
+    color: #000;
+  }
+
+  /* Espaço para rascunho (padrão: 2cm) */
+  .exercicio::after {
+    content: '';
+    display: block;
+    height: 2cm;
+    border-top: 1pt dashed #ccc;
+    margin: 0 0.75rem 0.75rem;
+  }
+
+  /* Modo sem rascunho */
+  body.sem-rascunho .exercicio::after { display: none; }
+  body.sem-rascunho .exercicio { margin-bottom: 1rem; }
+
+  .print-footer {
+    display: block !important;
+    text-align: center;
+    font-size: 8pt;
+    color: #888;
+    margin-top: 2rem;
+    border-top: 1pt solid #ddd;
+    padding-top: 0.5rem;
+  }
+}
