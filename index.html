@@ -506,9 +506,18 @@
     .exercicio::after {
       content: '';
       display: block;
-      height: 5.5cm;
+      height: 2cm;
       border-top: 1pt dashed #ccc;
       margin: 0 0.75rem 0.75rem;
+    }
+
+    /* Modo sem rascunho — aplicado via body.sem-rascunho */
+    body.sem-rascunho .exercicio::after {
+      display: none;
+    }
+
+    body.sem-rascunho .exercicio {
+      margin-bottom: 1rem;
     }
 
     .print-footer {
@@ -682,8 +691,12 @@ function showDay(num) {
   document.getElementById('view-home').style.display = 'none';
   document.getElementById('view-day').style.display  = 'block';
 
+  const semRascunho = document.body.classList.contains('sem-rascunho');
   document.getElementById('header-nav').innerHTML = `
     <button class="btn btn-ghost" onclick="showHome()">← Todos os dias</button>
+    <button class="btn btn-ghost" id="btn-rascunho" onclick="toggleRascunho()" title="Alternar espaço para rascunho na impressão">
+      ${semRascunho ? '□ Sem rascunho' : '▭ Com rascunho'}
+    </button>
     <button class="btn btn-primary" onclick="window.print()">⎙ Imprimir folha</button>
   `;
 
@@ -792,6 +805,14 @@ function toggleAll(dia, ex, btn) {
   // Reset outros botões
   const toggles = wrap.parentElement.querySelectorAll('.toggle-btn');
   toggles.forEach((b, i) => { if (i < 2) b.classList.remove('active'); });
+}
+
+// ── Toggle rascunho na impressão ──────────────────────────────────
+function toggleRascunho() {
+  document.body.classList.toggle('sem-rascunho');
+  const semRascunho = document.body.classList.contains('sem-rascunho');
+  const btn = document.getElementById('btn-rascunho');
+  if (btn) btn.textContent = semRascunho ? '□ Sem rascunho' : '▭ Com rascunho';
 }
 
 // ── Marcar dia como feito ─────────────────────────────────────────
